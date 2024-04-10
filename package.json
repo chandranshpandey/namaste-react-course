@@ -2,8 +2,9 @@
   "name": "namaste-react-app",
   "version": "1.0.0",
   "description": "This is basic react practivce app",
-  "main": "App.js",
   "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
     "test": "jest"
   },
   "keywords": [
@@ -20,6 +21,8 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.24.4",
+    "babel-plugin-transform-remove-console": "^6.9.4",
     "process": "^0.11.10"
   }
 }

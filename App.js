@@ -2,21 +2,25 @@ import React from "react";
 import ReactDOM from "react-dom/client"
 
 
-const heading1 = React.createElement("h1", {}, "Heading 1")
-const heading2 = React.createElement("h1", {}, "Heading 2")
+const Heading1 = () => <h1 id="title" key="1">Heading 1</h1>
+const Heading2 = () => <h1 id="heading2" key="2">Heading 2</h1>
+
+const HeaderComponent = () =>{
+    return(
+        <div>
+            <Heading1 />
+            <Heading2 />
+        </div>
+    );
+
+}
 
 
-const container = React.createElement("h1", {id:"container"},[heading1, heading2] )
+const container = React.createElement("h1", {id:"container"},"" )
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(container)
-console.log("this is a new feature")
-console.log("another feature")
-console.log("testing branch 1")
-console.log("testing branch 2")
-console.log("testing branch 3")
-console.log("testing branch 21")
-console.log("testing branch 22")
+root.render(<HeaderComponent />)
+
 
 
 // hello world

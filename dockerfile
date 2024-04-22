@@ -7,7 +7,7 @@ COPY package.json ./
 RUN npm install
 COPY . .
 
-EXPOSE 3241
+EXPOSE 1234
 CMD ["npm", "start"]
 # RUN npm run build
 # FROM nginx:stable-perl

@@ -1,25 +1,54 @@
-
 import RestaurantCard from "./RestaurantCard";
-import restaurantList from "../restaurant";
+import restaurantList from "../config";
+import { useState } from "react";
+
+function filterRestaurantData(textToSearch) {
+  return restaurantList.filter((ele) =>
+    ele.info.name.toLowerCase().includes(textToSearch)
+  );
+}
 
 const Body = () => {
-    return (
+  const [searchText, setSearchText] = useState(""); //returns an array var name and a function to update a variable
+  // basically initialize a state variable with restaurant variable
+  const [listOfRestaurant, setListOfRestaurant] = useState(restaurantList);
+  return (
+    <>
+      <div className="search-container">
+        <input
+          type="text"
+          className="search-input"
+          placeholder="search"
+          value={searchText}
+          onChange={(e) => {
+            console.log(e.target.value);
+            setListOfRestaurant(filterRestaurantData(e.target.value));
+            setSearchText(e.target.value);
+          }}
+        />
+        <button
+          className="search-btn"
+          onClick={() =>
+            setListOfRestaurant(
+              restaurantList.filter((ele) =>
+                ele.info.name.toLowerCase().includes(searchText)
+              )
+            )
+          }
+        >
+          Search
+        </button>
+      </div>
       <div className="restuarant-cards">
-        {/* I am passing restaurant props to my restaurant card, restaurant card need to receive the card */}
-        {/* have to write in a map way */}
-
-        {restaurantList.map((restaurant) => {
-          return <RestaurantCard restaurant={restaurant} key={restaurant.info.id}/>
+        {listOfRestaurant.map((restaurant) => {
+          return (
+            <RestaurantCard restaurant={restaurant} key={restaurant.info.id} />
+          );
           // console.log(rest.info)
         })}
-        {/* <RestaurantCard resturant={restaurantList[0]} />
-        <RestaurantCard resturant={restaurantList[1]} />
-        <RestaurantCard resturant={restaurantList[2]} />
-        <RestaurantCard resturant={restaurantList[3]} />
-        <RestaurantCard resturant={restaurantList[4]} />
-        <RestaurantCard resturant={restaurantList[5]} /> */}
       </div>
-    );
-  };
+    </>
+  );
+};
 
-  export default Body;
+export default Body;

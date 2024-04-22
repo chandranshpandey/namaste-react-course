@@ -1,11 +1,12 @@
+import { IMG_CDN_LINK } from "../config";
+
 const RestaurantCard = (props) => {
     return (
       <div className="card">
         <img
           alt="burger king"
           src={
-            "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" +
-            props.restaurant.info.cloudinaryImageId
+            IMG_CDN_LINK + props.restaurant.info.cloudinaryImageId
           }
         />
         <h3>{props.restaurant.info.name}</h3> 
